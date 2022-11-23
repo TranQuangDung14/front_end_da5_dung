@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { testapi } from 'src/app/models/admin';
+// import { testapi } from 'src/app/models/admin';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
@@ -11,7 +11,8 @@ import { AdminService } from 'src/app/service/admin.service';
 })
 export class TestapiComponent implements OnInit {
   private subscription: Subscription;
-  testapis: testapi[]=[];
+  testapis: any=[];
+  // testapis: testapi[]=[];
   constructor(private admin : AdminService) { }
   testapifromCreate: FormGroup = new FormGroup({
     name: new FormControl(),
@@ -45,8 +46,6 @@ export class TestapiComponent implements OnInit {
   onDelete(id:number){
     if(confirm("Bạn có chắc chắn không đấy?")){
       this.admin.delete(id).subscribe(data=>{
-        // alert(id);
-        // console.log(id);
         this.getalltestapi();
       })
     }
