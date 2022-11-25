@@ -39,6 +39,7 @@ export class CategoryProductComponent implements OnInit {
   }
   onCreate(){
     this.admin.create_category_product(this.category_product_fromCreate.value).subscribe(data=>{ 
+      this.category_product_fromCreate.reset();
       console.log(data);
        this.get_all_category_product();
     })

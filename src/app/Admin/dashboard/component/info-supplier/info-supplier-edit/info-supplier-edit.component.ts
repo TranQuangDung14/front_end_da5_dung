@@ -20,6 +20,7 @@ export class InfoSupplierEditComponent implements OnInit {
   })
   ngOnInit() {
     this.id = this._router.snapshot.params['id'];
+    // console.log(this._router.snapshot.params['id']);
     this.admin.get_info_supplier(this.id).subscribe(data => {
       console.log(data)
       this.info_supplier_fromEdit = new FormGroup({

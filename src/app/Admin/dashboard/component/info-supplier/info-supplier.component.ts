@@ -20,8 +20,11 @@ export class InfoSupplierComponent implements OnInit {
     sectors: new FormControl(),
   });
 
+  
+
   ngOnInit() {
     this.getall_info_supplier();
+    
   }
   getall_info_supplier(){
     this.subscription = this.admin.get_all_info_supplier().subscribe((data:any)=>{
@@ -42,7 +45,9 @@ export class InfoSupplierComponent implements OnInit {
   onCreate(){
     this.subscription = this.admin.create_info_supplier(this.info_supplier_fromCreate.value).subscribe((data)=>{
       console.log(data);
+      this.info_supplier_fromCreate.reset();
       this.getall_info_supplier();
     })
   }
+
 }

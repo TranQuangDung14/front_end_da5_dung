@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
   selector: 'app-posts',
@@ -7,9 +10,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-  constructor() { }
+  private subcription : Subscription;
+  posts: any;
+  constructor(private admin : AdminService) { }
+  posts_fromCreate: FormGroup = new FormGroup({
+    // id: new FormControl(),
+    type_post_id: new FormControl(),
+    title: new FormControl(),
+    staff_id: new FormControl(),
+    content: new FormControl()
 
-  ngOnInit() {
+});
+
+  ngOnInit(): void {
+    this.get_all_posts();
+  }
+
+  get_all_posts(){
+    this.subcription = this.admin.get_all_posts()
+    .subscribe((data:any)=>{
+      console.log(data);
+      this.posts=data;
+    },error =>{
+      console.log(error);
+
+    }
+    )
+  }
+  onCreate(){
+    this.admin.create_posts(this.posts_fromCreate.value).subscribe(data=>{ 
+      this.posts_fromCreate.reset();
+      console.log(data);
+       this.get_all_posts();
+    })
+  }
+  onDelete(id: number){ 
+       if(confirm("bạn có chắc chắn xóa không ?")){
+        this.admin.delete_posts(id).subscribe((data)=>{
+          this.get_all_posts();
+        })
+       }
   }
 
 }

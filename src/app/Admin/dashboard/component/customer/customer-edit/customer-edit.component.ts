@@ -23,7 +23,6 @@ export class CustomerEditComponent implements OnInit {
   })
   ngOnInit() {
     this.id = this._router.snapshot.params['id'];
-    // console.log(this._router.snapshot.params['id'])
     this.admin.get_customer(this.id).subscribe(data => {
       console.log(data)
       this.customer_fromEdit = new FormGroup({
@@ -38,10 +37,7 @@ export class CustomerEditComponent implements OnInit {
     })
   }
   onEdit() {
-    // alert('aa');
     this.admin.update_customer(this.id, this.customer_fromEdit.value).subscribe(data => {
-      // console.log(data);
-      // this.testapi.getalltestapi();
       this.router.navigate(['admin/customer']);
       
     });

@@ -25,7 +25,6 @@
       <td>{{info.adress}}</td>
       <td>{{info.number_phone}}</td>
       <td>{{info.sectors}}</td>
-      <!-- <td>{{info.email}}</td> -->
       <td>
         
         <a class="btn btn-secondary" style="margin-right: 10px ;" [routerLink]="['/admin/info-supplier-edit/',info.id]">Sửa</a>
@@ -40,7 +39,7 @@
 <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
-      <form action="" method="POST" [formGroup]="info_supplier_fromCreate" (ngSubmit)="onCreate()">
+      <form action=""  method="POST" [formGroup]="info_supplier_fromCreate" (ngSubmit)="onCreate()">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Thêm mới</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -49,7 +48,7 @@
           
           <div class="form-group">
             <label for="">Nhà cung cấp</label>
-            <input type="text" formControlName="name" class="form-control" placeholder="Nhà cung cấp">
+            <input type="text"  formControlName="name" class="form-control" placeholder="Nhà cung cấp">
           </div>
           <div class="form-group">
             <label for="">Email</label>
@@ -80,4 +79,3 @@
 
 
 </div> 
-<!-- <h1>tết</h1> -->

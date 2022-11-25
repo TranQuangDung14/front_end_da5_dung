@@ -43,6 +43,7 @@ export class CustomerComponent implements OnInit {
   }
   onCreate(){
     this.subscription = this.admin.create_customer(this.customer_fromCreate.value).subscribe((data)=>{
+      this.customer_fromCreate.reset();
       console.log(data);
       this.getall_customer();
     })
