@@ -34,7 +34,10 @@ import { TypeVideoEditComponent } from './dashboard/component/type-video/type-vi
 import { VideoComponent } from './dashboard/component/video/video.component';
 import { VideoEditComponent } from './dashboard/component/video/video-edit/video-edit.component';
 import { WarehouseComponent } from './dashboard/component/warehouse/warehouse.component';
+// import { DashboardComponent } from './dashboard/component/';
 import { WarehouseEditComponent } from './dashboard/component/warehouse/warehouse-edit/warehouse-edit.component';
+import { CKEditorModule } from 'ckeditor4-angular';
+import { DashboardAdminComponent } from './dashboard/component/dashboard-admin/dashboard-admin.component';
 
 
 const routes: Routes = [
@@ -46,6 +49,12 @@ const routes: Routes = [
       {
         path:"testapi",
         component:TestapiComponent,
+        canActivate: [IsAuthenticatedGuard],
+      },
+      // doashboard
+      {
+        path:"",
+        component:DashboardAdminComponent,
         canActivate: [IsAuthenticatedGuard],
       },
       {
@@ -252,6 +261,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    CKEditorModule,
     RouterModule.forChild(routes) // sử dụng để tạo vùng admin
   ]
 })

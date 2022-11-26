@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { TestppComponent } from './testpp/testpp.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CKEditorModule } from 'ckeditor4-angular';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CKEditorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

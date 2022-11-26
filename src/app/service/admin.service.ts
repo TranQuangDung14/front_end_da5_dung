@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AdminService {
   private API_URL = 'http://127.0.0.1:8000/api/';
 
-  private API_URL_de = 'http://127.0.0.1:8000/api/testdb/';
+  // private API_URL_de = 'http://127.0.0.1:8000/api/testdb/';
 
   public code_tokens = `Bearer ${localStorage.getItem('profanis_auth')}`;
   // private headers =
@@ -39,6 +39,14 @@ export class AdminService {
   //   return this._httpClient.get<testapi[]>(this.API_URL+'testdb/');
   //  }
 
+  // dashboard
+  getalldashboard(): Observable<any> {
+    return this._httpClient.get<any>(this.API_URL + 'dashboard/', {
+      headers: {
+        Authorization: this.code_tokens
+      }
+    });
+  }
 
   // Test api 
   getalltestapi(): Observable<any> {

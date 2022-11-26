@@ -13,6 +13,7 @@ export class CategoryProductComponent implements OnInit {
 
   private subcription : Subscription;
   category_product: any;
+  supplier:any;
   constructor(private admin : AdminService) { }
   category_product_fromCreate: FormGroup = new FormGroup({
     // id: new FormControl(),
@@ -29,8 +30,10 @@ export class CategoryProductComponent implements OnInit {
   get_all_category_product(){
     this.subcription = this.admin.getallcategory_product()
     .subscribe((data:any)=>{
-      console.log(data);
-      this.category_product=data;
+      console.log('category_product',data.category_product);
+      console.log('supplier',data.supplier);
+      this.category_product=data.category_product;
+      this.supplier=data.supplier;
     },error =>{
       console.log(error);
 

@@ -27,7 +27,7 @@ export class TestapiComponent implements OnInit {
     this.subscription = this.admin.getalltestapi()
     .subscribe((data:any)=>{
       console.log(data);
-      this.testapis=data;
+      this.testapis=data.data;
     },error =>{
       console.log(error);
 
