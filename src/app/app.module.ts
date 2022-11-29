@@ -8,12 +8,14 @@ import { TestppComponent } from './testpp/testpp.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ckeditor4-angular';
+// import { SanitizeHtmlPipe } from './share/pipe/sanitize-html.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestppComponent,
     LoginComponent,
+    // SanitizeHtmlPipe,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +23,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
     HttpClientModule,
     ReactiveFormsModule,
     CKEditorModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

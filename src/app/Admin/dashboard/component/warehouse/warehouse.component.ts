@@ -28,8 +28,8 @@ export class WarehouseComponent implements OnInit {
   get_all_warehouse(){
     this.subcription = this.admin.get_all_warehouse()
     .subscribe((data:any)=>{
-      console.log(data);
-      this.warehouse=data;
+      console.log(data.warehouse);
+      this.warehouse=data.warehouse;
     },error =>{
       console.log(error);
 

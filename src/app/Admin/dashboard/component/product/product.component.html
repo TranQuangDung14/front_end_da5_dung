@@ -15,6 +15,7 @@
         <td>Tên sản phẩm</td>
         <td>Giá ban đầu</td>
         <td >Giá hiện tại</td>
+        <td>Số lượng</td>
         <td >Ảnh</td>
         <td >mô tả sản phẩm</td>
         <td >Chức năng</td>
@@ -25,11 +26,14 @@
       <td>{{i+1}}</td>
       <td>{{pro.category_id}}</td>
       <td>{{pro.name}}</td>
-      <td>{{pro.default_price|number:'0.1-5'}}</td>
-      <td>{{pro.price|number:'0.1-5'}}</td>
+      <td>{{pro.default_price|number:'0.1-5'}} Vnđ</td>
+      <td>{{pro.price|number:'0.1-5'}} Vnđ</td>
+      <td>{{ pro.amount }}</td>
       <td>{{pro.image}}</td>
-      <td>{{pro.description}}</td>
+      <!-- <td>{{pro.description|sanitizeHtml  }}</td> -->
+      <td [innerHTML]="pro.description | sanitizeHtml"></td>
       <td>
+        
         
         <a class="btn btn-secondary" style="margin-right: 10px ;" [routerLink]="['/admin/product-edit/',pro.id]">Sửa</a>
         <button type="button" class="btn btn-danger"(click)="onDelete(pro.id)">Xóa</button>
@@ -43,7 +47,7 @@
 <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
-      <form action="" method="pro" [formGroup]="product_fromCreate" (ngSubmit)="onCreate()">
+      <form action="" method="pro" [formGroup]="product_fromCreate" (ngSubmit)="onCreate()" >
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Thêm mới</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -52,8 +56,13 @@
           
           <div class="form-group">
             <label for="">Loại sản phẩm</label>
-            <input type="text" formControlName="category_id" class="form-control" placeholder="Loại sản phẩm">
+            <!-- <input type="text" formControlName="category_id" class="form-control" placeholder="Loại sản phẩm"> -->
+            <select formControlName="category_id" >
+              <option [ngValue]="null" disabled>--Chọn loại sản phẩm--</option>
+              <option *ngFor="let cate of category_product" [ngValue]="cate.id">{{cate.name}}</option>
+            </select>
           </div>
+
           <div class="form-group">
             <label for="">Tên sản phẩm</label>
             <input type="text" formControlName="name" class="form-control" placeholder="Tên sản phẩm">
@@ -72,19 +81,12 @@
             <input type="text" formControlName="image" class="form-control" placeholder="Nội dung">
           </div>
           <div class="form-group">
+            <label for="">Số lượng</label>
+            <input type="text" formControlName="amount" class="form-control" placeholder="Nhập số lượng">
+          </div>
+          <div class="form-group">
             <label for="">mô tả sản phẩm</label>
             <ckeditor formControlName="description"></ckeditor>
-
-            <!-- <textarea name="editor1" type="text" formControlName="description" class="form-control" placeholder="mô tả sản phẩm"></textarea>
-
-            <script>
-              CKEDITOR.replace( 'editor1' );
-            </script> -->
-            <!-- <ckeditor data="<p>Hello, world!</p>"></ckeditor> -->
-            <!-- <textarea name="editor1"></textarea>
-            <script>
-              CKEDITOR.replace( 'editor1' );
-            </script> -->
           </div>
         </div>
         <div class="modal-footer">
@@ -99,3 +101,4 @@
 
 </div> 
 </div>
+

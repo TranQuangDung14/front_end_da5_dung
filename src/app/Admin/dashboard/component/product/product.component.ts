@@ -11,6 +11,7 @@ import { AdminService } from 'src/app/service/admin.service';
 export class ProductComponent implements OnInit {
   private subcription : Subscription;
   product: any;
+  category_product: any;
   constructor(private admin : AdminService) { }
   product_fromCreate: FormGroup = new FormGroup({
     category_id: new FormControl(),
@@ -18,7 +19,9 @@ export class ProductComponent implements OnInit {
     default_price: new FormControl(),
     price: new FormControl(),
     image: new FormControl(),
-    description: new FormControl()
+    description: new FormControl(),
+    amount: new FormControl(),
+    // product_supplier_id: new FormControl()
 });
 
   ngOnInit(): void {
@@ -28,8 +31,12 @@ export class ProductComponent implements OnInit {
   get_all_product(){
     this.subcription = this.admin.get_all_product()
     .subscribe((data:any)=>{
-      console.log(data);
-      this.product=data;
+      console.log(data.product);
+      console.log(data.category_product);
+      // CKEDITOR.instances.editor1.document.getBody().getText();
+      // console.log('supplier',data.supplier);
+      this.product=data.product;
+      this.category_product= data.category_product;
     },error =>{
       console.log(error);
 

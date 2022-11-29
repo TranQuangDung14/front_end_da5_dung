@@ -38,6 +38,8 @@ import { WarehouseComponent } from './dashboard/component/warehouse/warehouse.co
 import { WarehouseEditComponent } from './dashboard/component/warehouse/warehouse-edit/warehouse-edit.component';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { DashboardAdminComponent } from './dashboard/component/dashboard-admin/dashboard-admin.component';
+import { SanitizeHtmlPipe } from '../share/pipe/sanitize-html.pipe';
+// import { SanitizeHtmlPipe } from '../share/pipe/sanitize-html.pipe';
 
 
 const routes: Routes = [
@@ -256,12 +258,14 @@ const routes: Routes = [
     VideoEditComponent,
     WarehouseComponent,
     WarehouseEditComponent,
+    SanitizeHtmlPipe
     
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     CKEditorModule,
+    // SanitizeHtmlPipe,
     RouterModule.forChild(routes) // sử dụng để tạo vùng admin
   ]
 })
