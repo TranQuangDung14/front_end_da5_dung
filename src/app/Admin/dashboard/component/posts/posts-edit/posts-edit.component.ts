@@ -11,6 +11,7 @@ import { AdminService } from 'src/app/service/admin.service';
 export class PostsEditComponent implements OnInit {
 
   id: number = 0;
+  type_post: any;
   constructor(private admin : AdminService ,private _router: ActivatedRoute , private router :Router) { }
   posts_fromEdit: FormGroup = new FormGroup({
     type_post_id: new FormControl(),
@@ -28,6 +29,10 @@ export class PostsEditComponent implements OnInit {
         staff_id: new FormControl(data.staff_id),
         content: new FormControl(data.content)
       });
+    })
+    this.admin.get_all_type_posts().subscribe(data=>{
+      console.log('video_all',data);
+      this.type_post=data;
     })
   }
   onEdit() {

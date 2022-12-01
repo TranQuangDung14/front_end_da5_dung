@@ -11,6 +11,8 @@ import { AdminService } from 'src/app/service/admin.service';
 export class VideoComponent implements OnInit {
   private subcription : Subscription;
   video: any;
+  type_video: any;
+  video_all: any;
   constructor(private admin : AdminService) { }
   video_fromCreate: FormGroup = new FormGroup({
     title: new FormControl(),
@@ -27,8 +29,12 @@ export class VideoComponent implements OnInit {
   get_all_video(){
     this.subcription = this.admin.get_all_video()
     .subscribe((data:any)=>{
-      console.log(data);
-      this.video=data;
+      console.log(data.video);
+      console.log(data.type_video);
+      console.log(data.video_all);
+      this.video=data.video;
+      this.type_video=data.type_video;
+      this.video_all=data.video_all;
     },error =>{
       console.log(error);
 

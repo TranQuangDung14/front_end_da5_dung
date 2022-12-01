@@ -10,6 +10,7 @@ import { AdminService } from 'src/app/service/admin.service';
 })
 export class VideoEditComponent implements OnInit {
   id: number = 0;
+  video :any;
   constructor(private admin : AdminService ,private _router: ActivatedRoute , private router :Router) { }
   video_fromEdit: FormGroup = new FormGroup({
     title: new FormControl(),
@@ -28,6 +29,12 @@ export class VideoEditComponent implements OnInit {
         description: new FormControl(data.description),
 
       });
+    }
+    )
+    
+    this.admin.get_all_type_video().subscribe(data=>{
+      console.log('video_all',data);
+      this.video=data;
     })
   }
   onEdit() {

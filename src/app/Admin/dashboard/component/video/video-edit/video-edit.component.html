@@ -6,7 +6,11 @@
   </div>
   <div class="form-group">
     <label for="">Loại video</label>
-    <input type="text" formControlName="type_video_id" class="form-control" placeholder="Loại video">
+    <!-- <input type="text" formControlName="type_video_id" class="form-control" placeholder="Loại video"> -->
+    <select formControlName="type_video_id" >
+      <option [ngValue]="null" disabled>--Chọn loại sản phẩm--</option>
+      <option *ngFor="let video of video" [ngValue]="video.id">{{video.name}}</option>
+    </select>
   </div>
   <div class="form-group">
     <label for="">Video</label>
@@ -15,7 +19,8 @@
   </div>
   <div class="form-group">
     <label for="">Mô tả</label>
-    <input type="text" formControlName="description" class="form-control" placeholder="Mô tả">
+    <!-- <input type="text" formControlName="description" class="form-control" placeholder="Mô tả"> -->
+    <ckeditor formControlName="description"></ckeditor>
   </div>
   <br>
   <div style="text-align: center;">

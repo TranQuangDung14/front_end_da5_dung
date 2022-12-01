@@ -12,6 +12,8 @@ export class PostsComponent implements OnInit {
 
   private subcription : Subscription;
   posts: any;
+  type_post: any;
+  posts_old: any;
   constructor(private admin : AdminService) { }
   posts_fromCreate: FormGroup = new FormGroup({
     // id: new FormControl(),
@@ -29,8 +31,12 @@ export class PostsComponent implements OnInit {
   get_all_posts(){
     this.subcription = this.admin.get_all_posts()
     .subscribe((data:any)=>{
-      console.log(data);
-      this.posts=data;
+      console.log(data.posts_all);
+      console.log(data.type_post);
+      console.log('postall',data.posts);
+      this.posts=data.posts;
+      this.type_post=data.type_post;
+      this.posts_old=data.posts_all;
     },error =>{
       console.log(error);
 

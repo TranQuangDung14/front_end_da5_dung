@@ -1,5 +1,5 @@
 <div class="row my-3 bg-white" style="margin-left: 0px; margin-right: 0px;">
-  <h3 class="fs-4 mb-3">Quản lý bài viết</h3>
+  <h3 class="fs-4 mb-3">Quản lý video</h3>
 <div class="col ">
 
   <button type="button" class="btn btn-primary mb-3 " style="float: right;" data-bs-toggle="modal" data-bs-target="#add">
@@ -22,9 +22,9 @@
     <tr *ngFor="let video of video;let i = index">
       <td>{{i+1}}</td>
       <td>{{video.title}}</td>
-      <td>{{video.type_video_id}}</td>
+      <td>{{video.name}}</td>
       <td>{{video.video}}</td>
-      <td>{{video.description}}</td>
+      <td [innerHTML]="video.description | sanitizeHtml"></td>
       <td>
         
         <a class="btn btn-secondary" style="margin-right: 10px ;" [routerLink]="['/admin/video-edit/',video.id]">Sửa</a>
@@ -52,7 +52,11 @@
           </div>
           <div class="form-group">
             <label for="">Loại video</label>
-            <input type="text" formControlName="type_video_id" class="form-control" placeholder="Loại video">
+            <!-- <input type="text" formControlName="type_video_id" class="form-control" placeholder="Loại video"> -->
+            <select formControlName="type_video_id" >
+              <option [ngValue]="null" disabled>--Chọn loại sản phẩm--</option>
+              <option *ngFor="let video of type_video" [ngValue]="video.id">{{video.name}}</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="">Video</label>
@@ -61,7 +65,8 @@
           </div>
           <div class="form-group">
             <label for="">Mô tả</label>
-            <input type="text" formControlName="description" class="form-control" placeholder="Mô tả">
+            <!-- <input type="text" formControlName="description" class="form-control" placeholder="Mô tả"> -->
+            <ckeditor formControlName="description"></ckeditor>
           </div>
         </div>
         <div class="modal-footer">

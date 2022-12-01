@@ -1,0 +1,17 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-file-upload',
+  templateUrl: './file-upload.component.html',
+  styleUrls: ['./file-upload.component.css']
+})
+export class FileUploadComponent implements OnInit {
+  shortLink: string = "";
+  loading: boolean = false; // Flag variable
+  file: File; // Variable to store file
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
