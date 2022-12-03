@@ -39,6 +39,7 @@ import { WarehouseEditComponent } from './dashboard/component/warehouse/warehous
 import { CKEditorModule } from 'ckeditor4-angular';
 import { DashboardAdminComponent } from './dashboard/component/dashboard-admin/dashboard-admin.component';
 import { SanitizeHtmlPipe } from '../share/pipe/sanitize-html.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 // import { SanitizeHtmlPipe } from '../share/pipe/sanitize-html.pipe';
 
 
@@ -258,13 +259,15 @@ const routes: Routes = [
     VideoEditComponent,
     WarehouseComponent,
     WarehouseEditComponent,
-    SanitizeHtmlPipe
+    SanitizeHtmlPipe,
+    
     
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     CKEditorModule,
+    NgxPaginationModule,
     // SanitizeHtmlPipe,
     RouterModule.forChild(routes) // sử dụng để tạo vùng admin
   ]

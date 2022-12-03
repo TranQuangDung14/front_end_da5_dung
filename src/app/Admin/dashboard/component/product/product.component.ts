@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { AdminService } from 'src/app/service/admin.service';
 
@@ -9,10 +10,20 @@ import { AdminService } from 'src/app/service/admin.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
+  title ="paginate";
   private subcription : Subscription;
+
   product: any;
+  thumbnail: any;
   category_product: any;
-  constructor(private admin : AdminService) { }
+  //phân trang
+  // POSTS: any;
+  page: number =1;
+  count: number=0;
+  tableSize: number =5;
+  tableSizes: any =[5, 10, 15, 20];
+  //end
+  constructor(private admin : AdminService ,  private sanitizer: DomSanitizer) { }
   product_fromCreate: FormGroup = new FormGroup({
     category_id: new FormControl(),
     name: new FormControl(),
@@ -35,6 +46,9 @@ export class ProductComponent implements OnInit {
       console.log(data.category_product);
       // CKEDITOR.instances.editor1.document.getBody().getText();
       // console.log('supplier',data.supplier);
+      let objectURL = 'data:image/jpeg;base64,' + data.product;
+      console.log('image',data.product);
+      this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
       this.product=data.product;
       this.category_product= data.category_product;
     },error =>{
@@ -56,6 +70,17 @@ export class ProductComponent implements OnInit {
           this.get_all_product();
         })
        }
+  }
+
+  //phân trang
+  ontableDataChange(event:any){ 
+    this.page =event;
+    this.get_all_product();
+  }
+  ontableSizeChange(event: any):void{
+    this.tableSize = event.target.value;
+    this.page =1;
+    this.get_all_product();
   }
 
 }
