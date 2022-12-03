@@ -64,19 +64,19 @@ const routes: Routes = [
         path:"testapi-edit/:id",
         component:TestapiEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      }, 
+      },
 
       // danh mục sản phẩm
       {
         path:"category-product",
         component:CategoryProductComponent,
         canActivate: [IsAuthenticatedGuard],
-      },  
+      },
       {
         path:"category-edit/:id",
         component:CategoryProductEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },  
+      },
 
       // khách hàng
       {
@@ -88,7 +88,7 @@ const routes: Routes = [
         path:"customer-edit/:id",
         component:CustomerEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },    
+      },
       // thông tin nhà cung cấp
       {
         path:"info-supplier",
@@ -99,7 +99,7 @@ const routes: Routes = [
         path:"info-supplier-edit/:id",
         component:InfoSupplierEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },    
+      },
       // Nhân viên
       {
         path:"staff",
@@ -110,7 +110,7 @@ const routes: Routes = [
         path:"Staff-edit/:id",
         component:StaffEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },    
+      },
       // lịch sử đơn hàng
       {
         path:"order-history",
@@ -121,7 +121,7 @@ const routes: Routes = [
         path:"order-history-edit/:id",
         component:OrderHistoryEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },    
+      },
       // Đơn hàng
       {
         path:"order",
@@ -132,7 +132,7 @@ const routes: Routes = [
         path:"order-edit/:id",
         component:OrderEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },    
+      },
       // Bài đăng
       {
         path:"posts",
@@ -143,7 +143,7 @@ const routes: Routes = [
         path:"posts-edit/:id",
         component:PostsEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },    
+      },
       // Sản phẩm nhà cung cấp
       {
         path:"product-supplier",
@@ -154,7 +154,7 @@ const routes: Routes = [
         path:"product-supplier-edit/:id",
         component:ProductSupplierEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },    
+      },
       // Sản phẩm
       {
         path:"product",
@@ -165,7 +165,7 @@ const routes: Routes = [
         path:"product-edit/:id",
         component:ProductEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },    
+      },
       // Vận chuyển
       {
         path:"transport",
@@ -176,7 +176,7 @@ const routes: Routes = [
         path:"transport-edit/:id",
         component:TransportEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },    
+      },
       // Loại bài đăng
       {
         path:"type-posts",
@@ -187,7 +187,7 @@ const routes: Routes = [
         path:"type-posts-edit/:id",
         component:TypePostsEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },    
+      },
       // Loại video đăng
       {
         path:"type-video",
@@ -198,7 +198,7 @@ const routes: Routes = [
         path:"type-video-edit/:id",
         component:TypeVideoEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },    
+      },
       // video
       {
         path:"video",
@@ -209,7 +209,7 @@ const routes: Routes = [
         path:"video-edit/:id",
         component:VideoEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },    
+      },
       // Kho
       {
         path:"warehouse",
@@ -220,7 +220,7 @@ const routes: Routes = [
         path:"warehouse-edit/:id",
         component:WarehouseEditComponent,
         canActivate: [IsAuthenticatedGuard],
-      },    
+      },
     ]
     },
 ];
@@ -260,8 +260,8 @@ const routes: Routes = [
     WarehouseComponent,
     WarehouseEditComponent,
     SanitizeHtmlPipe,
-    
-    
+
+
   ],
   imports: [
     CommonModule,

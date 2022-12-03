@@ -32,7 +32,7 @@
           <td>{{pro.price|number:'0.1-5'}} Vnđ</td>
           <td>{{ pro.amount }}</td>
           <!-- <td>{{pro.image}}</td> -->
-          <img src="{{ pro.image }}" alt="" style="width: 20px; height: 40px;">
+          <img src="http://127.0.0.1:8000/storage/{{ pro.image }}" alt="" style="width: 20px; height: 40px;">
           <!-- <td>{{pro.description|sanitizeHtml  }}</td> -->
           <td [innerHTML]="pro.description | sanitizeHtml"></td>
           <td>
@@ -82,8 +82,8 @@
               </div>
 
               <div class="row">
-                <div class="col">      
-                  <div class="form-group">        
+                <div class="col">
+                  <div class="form-group">
                     <label for="">Giá ban đầu</label>
 
                     <input type="number" style="border-radius: 20px"  formControlName="default_price" class="form-control" placeholder="Giá ban đầu">
