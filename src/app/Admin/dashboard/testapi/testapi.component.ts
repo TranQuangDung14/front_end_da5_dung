@@ -38,6 +38,7 @@ export class TestapiComponent implements OnInit {
   onCreate(){
     this.admin.create(this.testapifromCreate.value).subscribe(data=>{
        console.log(data);
+       this.testapifromCreate.reset();
        this.getalltestapi();
     })
 

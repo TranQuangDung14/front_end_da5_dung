@@ -18,6 +18,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
     TestppComponent,
     LoginComponent,
     FileUploadComponent,
+    
     // SanitizeHtmlPipe,
   ],
   imports: [

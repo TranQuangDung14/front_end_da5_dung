@@ -40,12 +40,13 @@ import { CKEditorModule } from 'ckeditor4-angular';
 import { DashboardAdminComponent } from './dashboard/component/dashboard-admin/dashboard-admin.component';
 import { SanitizeHtmlPipe } from '../share/pipe/sanitize-html.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HttpClientModule } from '@angular/common/http';
 // import { SanitizeHtmlPipe } from '../share/pipe/sanitize-html.pipe';
 
 
 const routes: Routes = [
   {
-    path:"admin",
+    path:"",
     component: DashboardComponent,
     children:[
       // Test api
@@ -268,6 +269,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     CKEditorModule,
     NgxPaginationModule,
+    HttpClientModule,
     // SanitizeHtmlPipe,
     RouterModule.forChild(routes) // sử dụng để tạo vùng admin
   ]

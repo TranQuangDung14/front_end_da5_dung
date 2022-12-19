@@ -1,13 +1,13 @@
+
 <div class="row my-3 bg-white" style="margin-left: 0px; margin-right: 0px;">
   <h3 class="fs-4 mb-3">Quản lý sản phẩm</h3>
   <div class="col ">
-
     <button type="button" class="btn btn-primary mb-3 " style="float: right;" data-bs-toggle="modal"
       data-bs-target="#add">
       Thêm mới
     </button>
 
-    <table class="table table-striped rounded shadow-sm  bg-white ">
+    <table class="table  rounded shadow-sm  bg-white ">
       <!-- <table class="table   table-hover"> -->
       <thead>
         <tr>
@@ -23,8 +23,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pro of product | paginate:{ itemsPerPage : tableSize, currentPage: page,
-    totalItems: count};let i = index">
+        <tr *ngFor="let pro of product | paginate:{ itemsPerPage : tableSize, currentPage: page, totalItems: count};let i = index" >
+
+    <!-- <br> -->
           <td>{{i+1}}</td>
           <td>{{pro.name_cate}}</td>
           <td>{{pro.name}}</td>
@@ -32,9 +33,9 @@
           <td>{{pro.price|number:'0.1-5'}} Vnđ</td>
           <td>{{ pro.amount }}</td>
           <!-- <td>{{pro.image}}</td> -->
-          <img src="http://127.0.0.1:8000/storage/{{ pro.image }}" alt="" style="width: 20px; height: 40px;">
+          <img src="{{ pro.img_src }}" alt="" style="width: 80px; height: 80px">
           <!-- <td>{{pro.description|sanitizeHtml  }}</td> -->
-          <td [innerHTML]="pro.description | sanitizeHtml"></td>
+          <td  [innerHTML]="pro.description | sanitizeHtml"></td>
           <td>
 
 
@@ -52,7 +53,7 @@
     </div>
 
     <!-- Modal thêm mới -->
-    <div class="modal fade" id="add" style=" overflow:scroll;height:100px;" tabindex="-1"
+    <div class="modal fade" id="add" tabindex="-1"
       aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl">
         <div class="modal-content" style=" background-color: gainsboro;">
@@ -99,7 +100,15 @@
 
               <div class="form-group">
                 <label for="">Ảnh demo</label>
-                <input type="file" formControlName="image" class="form-control" placeholder="Nội dung">
+                <!-- <input type="file" formControlName="image" class="form-control" placeholder="Nội dung"> -->
+                <!-- <img [src]="url"  height="200" width="200" alt=""><br> -->
+                <!-- <input type="file"  formControlName="image" (change)="onFileSelected($event)" multiple> -->
+                <input type="file"  formControlName="image" (change)="updateImage($event)" >
+
+                <!-- <input type="file" formControlName="image" (change)="handleFileInput($event)" > -->
+                
+            
+                <!-- <button type="button" (click)=""> </button> -->
               </div>
               <div class="form-group">
                 <label for="">Số lượng</label>
@@ -118,7 +127,5 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </div>

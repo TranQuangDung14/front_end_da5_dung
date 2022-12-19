@@ -5,9 +5,14 @@ import { TestppComponent } from './testpp/testpp.component';
 
 const routes: Routes = [
   {
-    path:"",
+    path:"admin",
     loadChildren:() =>
     import('./Admin/admin.module').then((m)=>m.AdminModule),
+  },
+  {
+    path:"",
+    loadChildren:() =>
+    import('./user/user.module').then((m)=>m.UserModule),
   },
   {
     path:'test',

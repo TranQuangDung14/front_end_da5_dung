@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AdminService } from 'src/app/service/admin.service';
 
@@ -12,14 +12,15 @@ export class CustomerComponent implements OnInit {
   private subscription: Subscription;
   customer :any;
   constructor(private admin: AdminService ) { }
+  submitted:boolean = false;
   customer_fromCreate: FormGroup = new FormGroup({
-    name : new FormControl(),
-    id_user: new FormControl(),
-    date_of_birth: new FormControl(),
-    sex: new FormControl(),
-    email: new FormControl(),
-    adress: new FormControl(),
-    number_phone: new FormControl()
+    name : new FormControl('',Validators.required),
+    id_user: new FormControl('',Validators.required),
+    date_of_birth: new FormControl('',Validators.required),
+    sex: new FormControl('',Validators.required),
+    email: new FormControl('',Validators.email),
+    adress: new FormControl('',Validators.required),
+    number_phone: new FormControl('',Validators.required)
   });
 
   ngOnInit() {
@@ -41,7 +42,11 @@ export class CustomerComponent implements OnInit {
     })
   }
   }
+  get f(){
+    return this.customer_fromCreate.controls;
+  }
   onCreate(){
+    this.submitted=true;
     this.subscription = this.admin.create_customer(this.customer_fromCreate.value).subscribe((data)=>{
       this.customer_fromCreate.reset();
       console.log(data);

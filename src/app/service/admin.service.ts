@@ -420,6 +420,7 @@ export class AdminService {
       }
     });
   }
+  //them sản phẩm
   create_product(data:any): Observable<any> {
     return this._httpClient.post<any>(this.API_URL + 'product/',data, {
       headers: {
@@ -431,7 +432,11 @@ export class AdminService {
     return this._httpClient.get<any>(this.API_URL + 'product/' + id, {
       headers: {
         Authorization: this.code_tokens
-      }
+      },
+      // {  var formData = new FormData(),
+      //   formData.append('file', this.postForm.value)
+      // }
+    
     })
   }
   update_product(id: number, data: any): Observable<any> {
@@ -649,6 +654,39 @@ export class AdminService {
     );
   }
 
+  /// User
+
+
+  // Front end (user)
+  get_index_product(): Observable<any> {
+    return this._httpClient.get<any>(this.API_URL + 'get_product/')};
+  
+ //detail dữ liệu theo id
+ get_detail(id: number): Observable<any> {
+  return this._httpClient.get<any>(this.API_URL + 'get_product/' + id);
 }
+
+// get video user
+get_index_video(): Observable<any> {
+  return this._httpClient.get<any>(this.API_URL + 'get_video/')};
+
+  // get posts user
+get_index_posts(): Observable<any> {
+  return this._httpClient.get<any>(this.API_URL + 'get_posts/')};
+
+  // detail posts user
+get_detail_posts(id: number): Observable<any> {
+  return this._httpClient.get<any>(this.API_URL + 'get_posts/' + id);
+}
+
+get_product_by_cate(category: number): Observable<any> {
+  return this._httpClient.get<any>(this.API_URL + 'get_product_by_category'+ category);
+}
+
+
+}
+
+
+
 
 
